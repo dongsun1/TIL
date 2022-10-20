@@ -23,5 +23,12 @@ body {
 }
 ```
 
-   
+3. nuxt.config.js의 css 배열에 global.css 파일을 추가한다.
+
+```js
+css: [
+    ...,
+    "~/assets/fonts/global.css"
+],
+```
 
