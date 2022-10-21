@@ -23,7 +23,7 @@ export const mutations = {
 }
 ```
 
-그럼 Nuxt에서 아래와 같은 형태로 재컴파일 해준다.
+그럼 Nuxt에서 아래와 같은 형태로 재컴파일 해준다. 
 
 ```js
 new Vuex.Store({
