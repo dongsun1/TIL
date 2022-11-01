@@ -4,7 +4,7 @@
 
 ![](https://k.kakaocdn.net/dn/xC9Vq/btqB8n5A25K/GyOf4iwqu8euOyhwtFuyj1/img.gif)
 
-#### 깊이 우선 탐색의 개념
+#### 깊이 우선 탐색(DFS)의 개념
 
 루트 노드(혹은 다른 임의의 노드)에서 시작해서 다음 분기(branch)로 넘어가기 전에
 
