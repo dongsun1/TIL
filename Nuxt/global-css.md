@@ -31,4 +31,3 @@ css: [
     "~/assets/fonts/global.css"
 ],
 ```
-

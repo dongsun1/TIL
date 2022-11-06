@@ -5,7 +5,7 @@
 Composition API란 컴포넌트 로직을 유연하게 구성할 수 있는 API 모음으로 로직의 **재사용성과 가독성**을 높여준다.
 위의 그림과 같이 기존에는 data, methods, computed에 각각 로직이 흩어져 있었는데 Composition API를 활용하면 로직이 모아지는 것을 알 수 있다.
 
-Composition API의 가장 큰 특징 중 하나는 **Setup이다. 기존 Vue2의 Life Cycle과 비교하자면,
+Composition API의 가장 큰 특징 중 하나는 \*\*Setup이다. 기존 Vue2의 Life Cycle과 비교하자면,
 
 **beforeCreate -> setup()
 created -> setup()**
@@ -29,35 +29,35 @@ setup에서 반응형 데이터를 바인딩해주고, 기존에는 computed에 
 
 ```vue
 <template>
-    <div>
-        <h1>Count: {{ count }}</h1>
-        <h1>Double: {{ double }}</h1>
-        <button @click="increase">increase</button>
-        <button @click="decrease">decrease</button>
-    </div>
+  <div>
+    <h1>Count: {{ count }}</h1>
+    <h1>Double: {{ double }}</h1>
+    <button @click="increase">increase</button>
+    <button @click="decrease">decrease</button>
+  </div>
 </template>
 
 <script>
 export default {
-    data () {
-        return {
-            count: 0,
-        }
+  data() {
+    return {
+      count: 0,
+    };
+  },
+  computed: {
+    double() {
+      return this.count * 2;
     },
-    computed: {
-        double () {
-            return this.count * 2;
-        }
+  },
+  methods: {
+    increase() {
+      ++this.count;
     },
-    methods: {
-        increase () {
-            ++this.count;
-        },
-        decrease () {
-            --this.count;
-        }
-    }
-}
+    decrease() {
+      --this.count;
+    },
+  },
+};
 </script>
 ```
 
@@ -67,39 +67,39 @@ export default {
 
 ```vue
 <template>
-    <div>
-        <h1>Count: {{ count }}</h1>
-        <h1>Double: {{ double }}</h1>
-        <button @click="increase">increase</button>
-        <button @click="decrease">decrease</button>
-    </div>
+  <div>
+    <h1>Count: {{ count }}</h1>
+    <h1>Double: {{ double }}</h1>
+    <button @click="increase">increase</button>
+    <button @click="decrease">decrease</button>
+  </div>
 </template>
 
 <script>
-import { reactive, computed } from '@vue/composition-api';
+import { reactive, computed } from "@vue/composition-api";
 
 const useCount = () => {
-    const count = ref(0);
-    const double = computed(() => count.value * 2);
+  const count = ref(0);
+  const double = computed(() => count.value * 2);
 
-    const increase = () => ++count.value;
-    const decrease = () => --count.value;
+  const increase = () => ++count.value;
+  const decrease = () => --count.value;
 
-    return { count, double, increase, decrease }
-}
+  return { count, double, increase, decrease };
+};
 
 export default {
-    setup () {
-        const { count, double, increase, decrease } = useCount();
+  setup() {
+    const { count, double, increase, decrease } = useCount();
 
-        return {
-            count,
-            double,
-            increase,
-            decrease
-        }
-    }
-}
+    return {
+      count,
+      double,
+      increase,
+      decrease,
+    };
+  },
+};
 </script>
 ```
 
