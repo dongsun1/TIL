@@ -4,60 +4,60 @@
 
 ```js
 export const state = () => ({
-  list: []
-})
+  list: [],
+});
 
 export const mutations = {
   add(state, text) {
     state.list.push({
       text,
-      done: false
-    })
+      done: false,
+    });
   },
   remove(state, { todo }) {
-    state.list.splice(state.list.indexOf(todo), 1)
+    state.list.splice(state.list.indexOf(todo), 1);
   },
   toggle(state, todo) {
-    todo.done = !todo.done
-  }
-}
+    todo.done = !todo.done;
+  },
+};
 ```
 
-그럼 Nuxt에서 아래와 같은 형태로 재컴파일 해준다. 
+그럼 Nuxt에서 아래와 같은 형태로 재컴파일 해준다.
 
 ```js
 new Vuex.Store({
   state: () => ({
-    counter: 0
+    counter: 0,
   }),
   mutations: {
     increment(state) {
-      state.counter++
-    }
+      state.counter++;
+    },
   },
   modules: {
     todos: {
       namespaced: true,
       state: () => ({
-        list: []
+        list: [],
       }),
       mutations: {
         add(state, { text }) {
           state.list.push({
             text,
-            done: false
-          })
+            done: false,
+          });
         },
         remove(state, { todo }) {
-          state.list.splice(state.list.indexOf(todo), 1)
+          state.list.splice(state.list.indexOf(todo), 1);
         },
         toggle(state, { todo }) {
-          todo.done = !todo.done
-        }
-      }
-    }
-  }
-})
+          todo.done = !todo.done;
+        },
+      },
+    },
+  },
+});
 ```
 
 2. 실제 Vue.js 컴포넌트(페이지)에서 사용하는 예제는 아래와 같다.
@@ -66,32 +66,32 @@ new Vuex.Store({
 <template>
   <ul>
     <li v-for="todo in todos" :key="todo.text">
-      <input :checked="todo.done" @change="toggle(todo)" type="checkbox">
+      <input :checked="todo.done" @change="toggle(todo)" type="checkbox" />
       <span :class="{ done: todo.done }">{{ todo.text }}</span>
     </li>
-    <li><input @keyup.enter="addTodo" placeholder="할일 목록 입니다."></li>
+    <li><input @keyup.enter="addTodo" placeholder="할일 목록 입니다." /></li>
   </ul>
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapMutations } from "vuex";
 
 export default {
   computed: {
-    todos () {
-      return this.$store.state.todos.list
-    }
+    todos() {
+      return this.$store.state.todos.list;
+    },
   },
   methods: {
-    addTodo (e) {
-      this.$store.commit('todos/add', e.target.value)
-      e.target.value = ''
+    addTodo(e) {
+      this.$store.commit("todos/add", e.target.value);
+      e.target.value = "";
     },
     ...mapMutations({
-      toggle: 'todos/toggle'
-    })
-  }
-}
+      toggle: "todos/toggle",
+    }),
+  },
+};
 </script>
 
 <style>

@@ -2,8 +2,6 @@
 
 이진 탐색은 정렬된 리스트에서 검색 범위를 줄여 나가면서 검색 값을 찾는 알고리즘이다.
 
-
-
 이진 탐색은 정렬된 리스트에만 사용할 수 있다는 단점이 있지만, 검색이 반복될 때마다 검색 범위가 절반으로 줄기 때문에 속도가 빠르다는 장점이 있다.
 
 #### 동작 방식
@@ -12,9 +10,7 @@
 
 중간 값을 찾아야 하기 때문에 반드시 정렬된 배열에서만 사용할 수 있다.
 
- 
-
-이진 탐색의 동작 방식은 다음과 같다. 
+이진 탐색의 동작 방식은 다음과 같다.
 
 1. 배열의 중간 값을 가져온다.
 2. 중간 값과 검색 값을 비교한다.
@@ -37,7 +33,7 @@ mid  = low + (high - low) / 2
 
 ![img](https://k.kakaocdn.net/dn/cqSVub/btq5lyj0hdx/uueqouAwXkPUcQGJrFgEo0/img.png)
 
-2. 중앙 값과 검색 값을 비교한다. 
+2. 중앙 값과 검색 값을 비교한다.
 
    A [4] < key 이므로 배열의 오른쪽 구간을 검색 범위로 정한다.
 
@@ -89,7 +85,7 @@ mid = 5 + (6-5)/2
 | --------- | ---- | -------- | -------- |
 | Search    | O(1) | O(log n) | O(log n) |
 
-*n = 데이터 수
+\*n = 데이터 수
 
 #### 종료 조건
 
@@ -122,7 +118,7 @@ const binarySearch = (list, target, left, right) => {
     if (list[mid] === target) {
       return mid;
     }
-    
+
     // 대소 비교로 범위 지정
     if (list[mid] > target) {
       right = mid - 1;
@@ -132,7 +128,7 @@ const binarySearch = (list, target, left, right) => {
   }
 
   return -1;
-}
+};
 
 const sample = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
@@ -143,4 +139,3 @@ const result = binarySearch(sample, 7, 0, sample.length - 1);
 
 console.log(result);
 ```
-
