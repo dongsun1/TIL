@@ -28,3 +28,11 @@ DP 알고리즘의 개발 절차는 다음과 같다.
 이후, 중복 계산 문제를 해결하기 위해 배열을 이용해 저장하는 **Memoization**을 사용한다.
 
 그다음에는 이제 재귀 문제를 해결하기 위해 반복문으로 해결하는 **Tabulation**을 사용한다.
+
+![img](https://k.kakaocdn.net/dn/AeLfC/btrzi3CCgsU/7wkfKtApkQfslcuz3VXTS0/img.png)
+
+- **Divide and Conquer(중복 계산 문제, 재귀)**
+- **Memoization(중복 계산 문제 제거, 재귀)**
+- **Tabulation(중복 계산 문제 제거, 재귀 제거, 반복문)**
+
+결국 Tabulation이 최종 결과물이 되어야 한다.
